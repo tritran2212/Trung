@@ -1,0 +1,23 @@
+.banner{
+   
+    // background: color url() position/bg-size background-repeat; 42% bắt đàu từ số nhỏ xem màu nào chiếm nhiefu hơn 
+    background: url('../../img/udemy-logo-semi-transparent.svg ') 0/30% no-repeat,linear-gradient(61deg,$color-purple,$color-blue-1 42%);
+    height:325px;
+   
+    //  background-blend-mode: trung hòa màu
+    background-blend-mode: overlay;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    h2{
+        @include styleText($color-gray-0,$fs-4,$fw-0);
+    }
+    p{
+        color:$color-white-0;
+        margin-bottom: $mg-2;
+
+    }
+    button{
+        margin:$mg-4 0;
+    }
+}

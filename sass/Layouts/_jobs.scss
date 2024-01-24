@@ -1,0 +1,25 @@
+.jobs{
+    background-color: $color-gray-4;
+    .jobs__content{
+        .row{
+            padding:  0 $pd-0 ;
+        }
+        .jobs__item{
+            // max-width: khong thay foi
+            //padding  them + vao them cho rong ra
+            max-width: 450px;
+            margin:0 auto;
+            text-align: center;
+            padding:$pd-3 + 5;
+            h2{
+               @include styleText($color-black-light,$fs-3,$fw-1);
+            }
+        }
+    }
+    @include responsive("medium"){
+        .border-right {
+            border-right:none!important;
+        }
+    }
+    
+}

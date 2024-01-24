@@ -1,0 +1,180 @@
+// css 
+//.myNavBar .myNavBar__left{}
+// scss
+.myNavBar{ 
+    //đường mờ ở dưới navbar
+    box-shadow: 0 0 1px rgba(20,23,28,0.1),0 3px 1px 0 rgba(20,23,28,0.1);
+    .myNavBar__col{
+        padding-left: 0;
+    }
+    .myNavBar__left{
+        // flex-grow:đi kèm với flex, phần trống chia ra và cộng vào thẻ con
+        display: flex;
+        align-items: center;
+        .navbar-brand{
+            flex-grow:1;
+            text-align: center;
+            margin-right:0;
+            img{
+                width:100px;
+            }
+            .logo--black{
+                display: inline-block;
+            }
+            .logo--white{
+                display: none;
+            }
+            
+        }
+        .myNavBar__categories{
+            flex-grow:1;
+            text-align: center;
+            // dùng được nhiếu nói , gọi từ bên mixin 
+            @include styleText($color-black-light,$fs-1,$fw-0);
+            // cho màu thẻ i 
+            cursor:pointer;
+            i{
+                color:$color-gray-3;
+            }
+        }
+        .myNavBar__form-search{
+            flex-grow:8;  
+            @include styleFormSearch($color-white-cream,$color-white-0,$color-gray-4,$color-black-light);
+       
+    }
+}
+    .myNavBar_right{
+        // thẻ chứa display:flex
+        .navbar-nav{
+             justify-content: space-between;
+             align-items: center;
+             .nav-item{
+                padding:$pd-3 + 3 $pd-3;
+                border-radius: $border-radius + 1;
+                position: relative;
+                .nav-link{
+                    @include styleText($color-black-light,$fs-1,$fw-0);
+                }
+                &:hover{
+                    background-color:$color-gray-1 ;
+                    .overlay{
+                        display: block;
+                        z-index: 10;
+                    }
+                }
+                .overlay{
+                    display: none;
+                    background-color:$color-white-0 ;
+                    width:330px;
+                    padding:$pd-1 + 5;
+                    text-align: center;
+                    position: absolute;
+                    top:50px;
+                    right:0;
+                    border-top: 1px solid $color-gray-1;
+                    box-shadow: 0 4px 16px rgba(20, 23,28,0.25) ;
+                    // taoj tam giác ở trên 
+                    &::before{
+                            content:'';
+                            width:15px;
+                            height: 15px;
+                            background-color:$color-white-0 ;
+                            display: block;
+                            border-top:1px solid rgba(20, 23,28,0.25);
+                            border-left:1px solid rgba(20, 23,28,0.25);
+                            position:absolute;
+                            top:-8px;
+                            right:10%;
+                            // quay
+                            transform: rotate(45deg);
+
+                             
+                    }
+                }
+             }
+             .myNavBar__cart{
+                width:50px;
+                height: 50px;
+                list-style: 20px;
+                border-radius: 50%;
+                align-items: center;
+                letter-spacing: center;
+                .nav-link{
+                    font-size:$fs-3 +2;
+                }
+             }
+             .myNavBar__Button{
+                display: flex;
+                &:hover{
+                    background-color: transparent;
+                }
+                .button--white{
+                    margin-right: $mg-0;
+                }
+                .button{
+                    // không rớt xuống dòng
+                    white-space:nowrap;
+                }
+             }
+             
+        }
+    }
+    
+    // do không co khung nào cụ thể
+    @media screen and (min-width:1200px ) and (max-width:1375px){
+        .myNavBar_right{
+            .navbar-nav{
+                .nav-item{
+                    white-space: nowrap;
+                    text-align: center;
+                    .nav-link{
+                        font-size:$fs-1 -1;
+                    }
+                    .overlay{
+                        white-space: normal;
+                    }
+                }
+            }
+        }
+        .myNavBar--reset{
+            // kéo cách lề bên phải
+            padding-left: 0;
+        }
+    }
+    //  max-width:1200px;
+    @include responsive("extra-large"){
+        .business, .instructor{
+            display: none;
+        }
+        .myNavBar {
+            .myNavBar_right {
+                .navbar-nav{
+            justify-content: space-around;
+                }
+            }
+        }
+    }
+    @include responsive("medium"){
+        .myNavBar__left{
+            .myNavBar__categories,.myNavBar__form-search{
+                display: none;
+            }
+        }
+        .myNavBar_right{
+            // cho nhỏ lại
+             width:50%;
+            //  canh xác lề bên phải
+             margin-left:auto;
+            .navbar-nav{
+             text-align: center;
+                .myNavBar__Button{
+                    display: none;
+                }
+            }
+        }
+    }
+   
+}
+
+
+

@@ -1,0 +1,53 @@
+footer{
+    @include styleText($color-gray-0,$fs-1,$fw-0);
+    .footer__top{
+        Width:90%;
+        margin: $mg-1 + 5 auto;
+        ul{
+            // cho height cố định con chia nhỏ ra k lấy hết height của cha
+            height:110px;
+            .nav-item{
+                // xét kích thước của mỗi item dựa vào thẻ cha 
+               flex-basis: 25%;
+                .nav-link{
+                    color:$color-blue-0;
+                    padding:0;
+                    // cùng thẻ
+                    &.bold{
+                        font-weight:$fw-4;
+                    }
+                }
+            }
+        }
+        .btn-group{
+            display: block;
+            .button--dropup{
+                min-width: 160px;
+                i{
+                    padding:0 $pd-0;
+                }
+                &::after{
+                    margin-left:30%;
+                }
+            }
+        }
+    }
+    .footer__bottom{
+    color:$color-dark-3;
+        width:90%;
+        margin:$mg-2 - 2 auto;
+        img{
+            width:110px;
+            margin-right: $mg-0 + 5;
+        }
+        .logo--black{
+            display: inline-block;
+        }
+        .logo--white{
+            display: none;
+        }
+        .nav-link{
+            @include styleText($color-blue-0,$fs-1,$fw-0);
+        }
+    }
+}
